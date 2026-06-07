@@ -382,14 +382,17 @@ async function loadGitHubRepos() {
     
     repos.forEach((repo, i) => {
       // Exclude forks or specific repos if needed, here we show all.
-      // Use GitHub OpenGraph image to show a visual representation of the repo
-      const ogImageUrl = `https://opengraph.githubassets.com/1/FadelSearr/${repo.name}`;
+      // Use GitHub OpenGraph image as default, override for WebGis_Munich
+      let imageUrl = `https://opengraph.githubassets.com/1/FadelSearr/${repo.name}`;
+      if (repo.name === 'WebGis_Munich') {
+        imageUrl = 'assets/webgis-munich.jpg';
+      }
       
       const langTag = repo.language ? `<span>${repo.language}</span>` : '';
       
       const cardHTML = `
         <a href="${repo.html_url}" target="_blank" style="text-decoration:none; color:inherit; display:block;" class="p-card sr vis" data-cat="individu">
-          <div class="p-head" style="background-image: url('${ogImageUrl}'); background-size: cover; background-position: center;">
+          <div class="p-head" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
             <div style="position:absolute; inset:0; background:rgba(0,0,0,0.4); transition:var(--tr);" onmouseover="this.style.background='rgba(0,0,0,0.1)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'"></div>
           </div>
           <div class="p-body">
