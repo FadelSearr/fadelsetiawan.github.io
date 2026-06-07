@@ -385,7 +385,7 @@ async function loadGitHubRepos() {
       // Use GitHub OpenGraph image as default, override for WebGis_Munich
       let imageUrl = `https://opengraph.githubassets.com/1/FadelSearr/${repo.name}`;
       if (repo.name === 'WebGis_Munich') {
-        imageUrl = 'assets/webgis-munich.jpg';
+        imageUrl = 'assets/webgis-munich.png';
       }
       
       const langTag = repo.language ? `<span>${repo.language}</span>` : '';
